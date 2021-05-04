@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-azuretools.vscode-docker",
+        "angular.ng-template",
+        "ms-dotnettools.csharp",
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint",
+        "ecmel.vscode-html-css",
+        "mariusalchimavicius.json-to-ts",
+        "johnpapa.vscode-peacock"
+    ]
+}
