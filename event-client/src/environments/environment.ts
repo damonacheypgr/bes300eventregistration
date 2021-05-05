@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   employeeApi: 'http://localhost:1337/employees/',
-  eventsApi: 'http://localhost:1338/events/'
+  eventsApi: 'http://localhost:1338/events/',
+  hub: 'http://localhost:1338/registrationshub'
 };
 
 /*

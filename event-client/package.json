@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
+    "@microsoft/signalr": "^5.0.5",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "@ngrx/effects": "^11.1.1",
     "@ngrx/entity": "^11.1.1",

@@ -24,6 +24,7 @@ namespace EventsAPI.Controllers
 
         // Todo: How do we add a registration to an event?
         [HttpPost("events/{eventId:int}/registrations")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 10)]
         public async Task<ActionResult> AddRegistration(int eventId, [FromBody] PostReservationRequest request)
         {
             // check to see if there is an event with that id.
@@ -58,7 +59,7 @@ namespace EventsAPI.Controllers
                 registration);
         }
 
-
+        [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 5)]
         [HttpGet("events/{eventId:int}/registrations/{registrationId:int}", Name ="get-event-reservation")]
         public async Task<ActionResult> LookupRegistration(int eventId, int registrationId)
         {

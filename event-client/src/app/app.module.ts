@@ -19,6 +19,7 @@ import { EventRegisterSyncComponent } from './components/event-register-sync/eve
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RegistrationEffects } from './effects/registration.effects';
+import { WsRegistrationsEffects } from './effects/ws.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { RegistrationEffects } from './effects/registration.effects';
       EmployeeSummaryEffects,
       EventSummaryEffects,
       ParticipantEffects,
-      RegistrationEffects]),
+      RegistrationEffects,
+      WsRegistrationsEffects]),
     StoreDevtoolsModule.instrument(),
     HttpClientModule,
     NgbModule,

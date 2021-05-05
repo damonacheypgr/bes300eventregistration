@@ -1,4 +1,5 @@
 using EventsAPI.Data;
+using EventsAPI.Hubs;
 using EventsAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -63,6 +64,8 @@ namespace EventsAPI
             //var channel = new EventRegistrationChannel();
             services.AddSingleton<EventRegistrationChannel>();
             services.AddHostedService<BackgroundRegistrationWorker>();
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +85,7 @@ namespace EventsAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<RegistrationsHub>("/registrationshub");
             });
         }
     }

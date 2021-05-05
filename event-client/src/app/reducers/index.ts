@@ -5,13 +5,15 @@ import * as fromEvents from './events-summary.reducer';
 import * as fromSelected from './selected.reducer';
 import * as fromParticipants from './participants.reducer';
 import * as fromRegistration from './registrations.reducer'
+import * as fromWs from './ws.reducer';
 
 export interface AppState {
   employeeSummary: fromEmployeeSummary.EmployeeSummaryState,
   eventsSummary: fromEvents.EventState,
   selected: fromSelected.SelectedState,
   participants: fromParticipants.ParticipantsState,
-  registrations: fromRegistration.RegistrationState
+  registrations: fromRegistration.RegistrationState,
+  ws: fromWs.WsRegistrationState
 
 }
 
@@ -20,7 +22,8 @@ export const reducers: ActionReducerMap<AppState> = {
   eventsSummary: fromEvents.reducer,
   selected: fromSelected.reducer,
   participants: fromParticipants.reducer,
-  registrations: fromRegistration.reducer
+  registrations: fromRegistration.reducer,
+  ws: fromWs.reducer
 }
 
 
@@ -29,11 +32,18 @@ const selectEventsSummaryBranch = (state: AppState) => state.eventsSummary;
 const selectSelectedBranch = (state: AppState) => state.selected;
 const selectParticipantsBranch = (state: AppState) => state.participants;
 const selectRegistrationsBranch = (state: AppState) => state.registrations;
-
+const selectWsBranch = (state: AppState) => state.ws;
 
 export const { selectAll: selectAllEmployeesSummary } = fromEmployeeSummary.adapter.getSelectors(selectEmployeeSummaryBranch);
 export const { selectAll: selectAllEventSummary } = fromEvents.adapter.getSelectors(selectEventsSummaryBranch);
 export const { selectAll: selectAllRegistrations } = fromRegistration.adapter.getSelectors(selectRegistrationsBranch);
+export const { selectAll: selectAllWsRegistration } = fromWs.adapter.getSelectors(selectWsBranch);
+
+
+export const selectWsMessages = createSelector(
+  selectWsBranch,
+  b => b.messages
+)
 export const selectSelectedEmployee = createSelector(
   selectSelectedBranch,
   b => b.employee

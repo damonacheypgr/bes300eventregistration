@@ -46,5 +46,5 @@ namespace EventsAPI.Services
     }
 
 
-    public record EventRegistrationChannelRequest(int RegistrationId);
+    public record EventRegistrationChannelRequest(int RegistrationId, string WsClient = null);
 }
