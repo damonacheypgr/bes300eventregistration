@@ -1,0 +1,14 @@
+<ng-container *ngIf="!selected">
+
+  <div class="alert alert-info"
+       *ngFor="let event of events">
+    <h4>{{event.name}}</h4>
+    <p>{{event.longDescription}}</p>
+    <p>Hosted by: {{event.hostedBy }}</p>
+    <div>
+      <button class="btn btn-sm btn-primary"
+              (click)="onEventSelected(event)">Select Event</button>
+    </div>
+  </div>
+
+</ng-container>

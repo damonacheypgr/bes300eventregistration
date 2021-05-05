@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { loadEmployeeSummary } from './actions/employee-summary.actions';
+import { loadEventSummary } from './actions/event-summary.actions';
+import { AppState } from './reducers';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'event-client';
+
+  constructor(store: Store<AppState>) {
+    store.dispatch(loadEmployeeSummary());
+    store.dispatch(loadEventSummary());
+  }
 }

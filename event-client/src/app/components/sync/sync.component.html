@@ -1,0 +1,24 @@
+<header>
+  <h3>Synchronous Version</h3>
+</header>
+<div class="row">
+  <app-event-register-sync (startOver)="startOver()"
+                           (register)="register($event)"
+                           [selectedEmployee]="selectedEmployee$ | async"
+                           [selectedEvent]="selectedEvent$ | async"
+                           [bothSelected]="bothSelected$ | async"></app-event-register-sync>
+</div>
+<div class="row">
+  <div class="col">
+    <h5>Events</h5>
+    <app-event-list (eventSelected)="eventSelected($event)"
+                    [selected]="selectedEvent$ | async"
+                    [events]="events$ | async"></app-event-list>
+  </div>
+  <div class="col">
+    <h5>Employees</h5>
+    <app-employee-list (employeeSelected)="employeeSelected($event)"
+                       [selected]="selectedEmployee$ | async"
+                       [employees]="employeeSummary$ | async"></app-employee-list>
+  </div>
+</div>

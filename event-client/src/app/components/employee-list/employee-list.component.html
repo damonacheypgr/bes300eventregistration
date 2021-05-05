@@ -1,0 +1,12 @@
+<ng-container *ngIf="!selected">
+
+  <div class="alert alert-info"
+       *ngFor="let employee of employees">
+    <h4>{{employee.firstName}} {{employee.lastName}}</h4>
+    <div>
+      <button (click)="onEmployeeSelected(employee)"
+              class="btn btn-primary">Select Employee</button>
+    </div>
+  </div>
+
+</ng-container>

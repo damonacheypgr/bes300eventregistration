@@ -1,0 +1,17 @@
+<div class="">
+
+  <div *ngIf="selectedEvent">
+    <h5>Event {{selectedEvent.name }}</h5>
+  </div>
+  <div *ngIf="selectedEmployee">
+    <h5>Employee {{selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</h5>
+  </div>
+  <div *ngIf="bothSelected">
+    <button (click)="onRegister(selectedEvent,selectedEmployee)"
+            class="btn btn-primary">Register!</button>
+  </div>
+  <div *ngIf="selectedEvent || selectedEmployee">
+    <button (click)="onStartOver()"
+            class="btn btn-danger">Start Over</button>
+  </div>
+</div>

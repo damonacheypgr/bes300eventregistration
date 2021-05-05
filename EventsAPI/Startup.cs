@@ -33,7 +33,8 @@ namespace EventsAPI
             {
                 options.AddDefaultPolicy(policy =>
                 {
-                    policy.AllowAnyOrigin();
+                    var origins = Configuration.GetSection("origins").GetChildren().ToArray().Select(o => o.Value).ToArray();
+                    policy.WithOrigins(origins);
                     policy.AllowAnyMethod();
                     policy.AllowCredentials();
                     policy.AllowCredentials();
