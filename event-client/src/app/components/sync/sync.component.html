@@ -1,24 +1,51 @@
-<header>
-  <h3>Synchronous Version</h3>
-</header>
+<div class="card">
+  <div class="card-header">
+    <h3>Synchronous Version</h3>
+  </div>
+  <div class="card-body">
+    <p>This demonstration is showing the user experience of adding someone as a participant to an event in a synchronous
+      manner.</p>
+    <p>At the server side, when you POST to <code>/events/id/participants</code> route the server makes a call to the
+      <code>employees</code> resource
+      to verify they are still an active employee.
+    </p>
+    <p>We block the UI while this is happening because our state is unknown in the client. Is the person registered? Are
+      they not registered?</p>
+  </div>
+</div>
 <div class="row">
   <app-event-register-sync (startOver)="startOver()"
-                           (register)="register($event)"
+                           (register)="register($event, content)"
                            [selectedEmployee]="selectedEmployee$ | async"
                            [selectedEvent]="selectedEvent$ | async"
                            [bothSelected]="bothSelected$ | async"></app-event-register-sync>
 </div>
 <div class="row">
   <div class="col">
-    <h5>Events</h5>
+
     <app-event-list (eventSelected)="eventSelected($event)"
                     [selected]="selectedEvent$ | async"
                     [events]="events$ | async"></app-event-list>
   </div>
   <div class="col">
-    <h5>Employees</h5>
+
     <app-employee-list (employeeSelected)="employeeSelected($event)"
                        [selected]="selectedEmployee$ | async"
                        [employees]="employeeSummary$ | async"></app-employee-list>
   </div>
 </div>
+
+<ng-template #content
+             let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title"
+        id="modal-basic-title">Adding Participant!</h4>
+
+  </div>
+  <div class="modal-body">
+    <h3>Please Wait while we do the addition to the partipants thing in a really slow awkward way...</h3>
+    <img src="/assets/cheesy-pizza-loader.gif"
+         alt="">
+  </div>
+
+</ng-template>

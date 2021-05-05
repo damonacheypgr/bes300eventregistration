@@ -1,1 +1,50 @@
-<p>async works!</p>
+<form [formGroup]="form"
+      (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="event">Event</label>
+    <select class="form-control"
+            formControlName="event">
+      <option value=""></option>
+      <option *ngFor="let event of events$ | async"
+              [ngValue]="event">{{event.name}} - {{event.longDescription}}</option>
+    </select>
+    <div class="alert alert-danger"
+         *ngIf="event.errors && (event.touched || event.dirty)">
+      <p>Please pick an event</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="employee">Employee</label>
+    <select class="form-control"
+            formControlName="employee">
+      <option value=""></option>
+      <option *ngFor="let employee of employees$ | async"
+              [ngValue]="employee">{{employee.firstName}} {{employee.lastName}}</option>
+    </select>
+    <div class="alert alert-danger"
+         *ngIf="employee.errors && (employee.touched || employee.dirty)">
+      <p>Please pick an employee</p>
+    </div>
+  </div>
+  <button type="submit"
+          class="btn btn-primary">Send Registration</button>
+</form>
+
+<div class=""
+     *ngFor="let registration of registrations$ | async">
+  <div class="card">
+    <div class="card-header">
+      Registration: {{registration.employeeName }} | {{ registration.eventName }}
+    </div>
+    <div class="card-body">
+      Status: {{registration.status}}
+      <div>
+        <button *ngIf="registration.status === 'Pending'"
+                (click)="checkStatus(registration.id, registration.eventId)"
+                class="btn btn-sm btn-primary">Check Status</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

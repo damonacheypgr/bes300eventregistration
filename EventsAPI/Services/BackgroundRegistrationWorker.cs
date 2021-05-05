@@ -40,7 +40,7 @@ namespace EventsAPI.Services
                 var savedRegistration = await context.EventRegistrations
                        .SingleOrDefaultAsync(e => e.Id == registration.RegistrationId);
 
-                if (await client.CheckEmployeeIsActive(registration.RegistrationId))
+                if (await client.CheckEmployeeIsActive(savedRegistration.EmployeeId))
                 {
                     savedRegistration.Status = EventRegistrationStatus.Approved;
                 } else

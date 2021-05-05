@@ -76,7 +76,7 @@ namespace EmployeesAPI
             app.Use(async (context, next) =>
             {
                 // you can't change anything.
-                await Task.Delay(1500);
+                await Task.Delay(3000);
                 await next.Invoke();
                 // after the controller runs.
             });

@@ -13,9 +13,12 @@ import { WsComponent } from './components/ws/ws.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
-import { EmployeeSummaryEffects, EventSummaryEffects } from './effects';
+import { EmployeeSummaryEffects, EventSummaryEffects, ParticipantEffects } from './effects';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { EventRegisterSyncComponent } from './components/event-register-sync/event-register-sync.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { ReactiveFormsModule } from '@angular/forms'
+import { RegistrationEffects } from './effects/registration.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +34,15 @@ import { EventRegisterSyncComponent } from './components/event-register-sync/eve
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([EmployeeSummaryEffects, EventSummaryEffects]),
+    EffectsModule.forRoot([
+      EmployeeSummaryEffects,
+      EventSummaryEffects,
+      ParticipantEffects,
+      RegistrationEffects]),
     StoreDevtoolsModule.instrument(),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
